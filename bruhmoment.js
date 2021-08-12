@@ -1,15 +1,16 @@
 
 
-// VARIABLES for choices and stuff
-let playerScore = 0;
-let computerScore = 0;
-const getComputerChoice = computerChoice();
+    // VARIABLES for choices and stuff
+    let playerScore = 0;
+    let computerScore = 0;
+    let getComputerChoice = computerChoice();
+    let getPlayerChoice = playerInput();
 
-let getPlayerChoice = function playerInput() {
- getPlayerChoice = window.prompt("Rock, Paper, or Scissors?");
-    return getPlayerChoice
-}
-
+//function that gets player input
+function playerInput() {
+    let i = window.prompt("Rock, Paper, or Scissors?");
+    return i;
+    }
 // Function that returns either rock paper or scissors ok? UwU
 function computerChoice() {
     const choiceBruh = Math.floor(Math.random()* 3);
@@ -29,25 +30,25 @@ function computerChoice() {
 function playRound(getComputerChoice, getPlayerChoice) { 
     
     if (getComputerChoice === 'rock' && getPlayerChoice.toLowerCase() === 'scissors') {
-       let result =  "You lose, go cry. rock beats scissors";
+       let result =  "You lose. rock beats scissors";
        return result;
     } else if (getComputerChoice === 'scissors' && getPlayerChoice.toLowerCase() === 'paper') {
-        let result = "You lose, go cry. scissors beats paper";
+        let result = "You lose. scissors beats paper";
         return result;
     } else if (getComputerChoice === 'paper' && getPlayerChoice.toLowerCase() === 'rock') {
-        let result = "You lose, go cry. paper beats rock"
+        let result = "You lose. paper beats rock"
         return result
     } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
         let result = " Its a Draw"
         return result;
     }
 else {
-        let result = "You Finally won (LOL) good job gamer"
+        let result = "You win"
         return result
     }
 }
 
-function scoreSystem () {
+function scoreSystem() {
     if (getComputerChoice === 'rock' && getPlayerChoice.toLowerCase() === 'scissors') {
         
         computerScore++;
@@ -62,22 +63,22 @@ function scoreSystem () {
         
         computerScore++;
         return computerScore
-     } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
 
+     } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
+        
      }
 
      else {
         playerScore++;
         return playerScore
      }
-}
+    }
 
-// Function to play one round which prints out all the needed values
+// Function to play one round and stuff
 function oneRoundBro() {
-    getPlayerChoice()
     scoreSystem();
     console.log("playerInput: " + getPlayerChoice + "  PlayerScore: " + playerScore)
     console.log("ComputerInput: " + getComputerChoice + "  ComputerScore: " + computerScore)
     console.log(playRound(getComputerChoice, getPlayerChoice))
 }
- oneRoundBro()
+oneRoundBro()
