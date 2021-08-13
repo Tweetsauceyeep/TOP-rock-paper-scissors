@@ -1,16 +1,7 @@
 
 
-    // VARIABLES for choices and stuff
-    let playerScore = 0;
-    let computerScore = 0;
-    let getComputerChoice = computerChoice();
-    let getPlayerChoice = playerInput();
 
-//function that gets player input
-function playerInput() {
-    let i = window.prompt("Rock, Paper, or Scissors?");
-    return i;
-    }
+
 // Function that returns either rock paper or scissors ok? UwU
 function computerChoice() {
     const choiceBruh = Math.floor(Math.random()* 3);
@@ -26,59 +17,55 @@ function computerChoice() {
     }
 }
 
+// VARIABLES for Scores
+let playerScore = 0;
+let computerScore = 0;
+
 // THIs IS THE ACTUAL PLAY ROUND FUNCTION PLEASE REMEMBER THIS BRO
 function playRound(getComputerChoice, getPlayerChoice) { 
     
-    if (getComputerChoice === 'rock' && getPlayerChoice.toLowerCase() === 'scissors') {
-       let result =  "You lose. rock beats scissors";
-       return result;
-    } else if (getComputerChoice === 'scissors' && getPlayerChoice.toLowerCase() === 'paper') {
-        let result = "You lose. scissors beats paper";
-        return result;
-    } else if (getComputerChoice === 'paper' && getPlayerChoice.toLowerCase() === 'rock') {
-        let result = "You lose. paper beats rock"
-        return result
-    } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
-        let result = " Its a Draw"
-        return result;
-    }
-else {
-        let result = "You win"
-        return result
-    }
-}
-
-function scoreSystem() {
-    if (getComputerChoice === 'rock' && getPlayerChoice.toLowerCase() === 'scissors') {
-        
+    if (getComputerChoice === 'rock' && getPlayerChoice.toLowerCase() === 'scissors') { // rock to scissors comp wins
         computerScore++;
-        return computerScore
-
-     } else if (getComputerChoice === 'scissors' && getPlayerChoice.toLowerCase() === 'paper') {
-        
+       return `You lose. rock beats scissors | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
+    } else if (getComputerChoice === 'scissors' && getPlayerChoice.toLowerCase() === 'paper') { // scissors to paper comp wins
         computerScore++;
-        return computerScore
-
-     } else if (getComputerChoice === 'paper' && getPlayerChoice.toLowerCase() === 'rock') {
-        
+        return `You lose. scissors beats paper | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
+    } else if (getComputerChoice === 'paper' && getPlayerChoice.toLowerCase() === 'rock') { // paper to rock comp wins
         computerScore++;
-        return computerScore
-
-     } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
-        
-     }
-
-     else {
+        return `You lose. scissors beats paper | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
+    } else if (getPlayerChoice.toLowerCase() === 'rock' && getComputerChoice === 'scissors') { // Player options and funcitons adasd
         playerScore++;
-        return playerScore
-     }
+        return `You Win. rock beats scissors | Score: ${playerScore} to ${computerScore}| PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}` ;
+    } else if (getPlayerChoice.toLowerCase() === 'scissors' && getComputerChoice === 'paper') {
+        playerScore++;
+        return `You Win. scissors beats paper | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
+    } else if (getPlayerChoice.toLowerCase() === 'paper' && getComputerChoice === 'rock') {
+        playerScore++;
+        return `You Win. paper beats rock | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
+    } else if (getComputerChoice === getPlayerChoice.toLowerCase()) {
+        return ` Its a Draw | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
     }
-
-// Function to play one round and stuff
-function oneRoundBro() {
-    scoreSystem();
-    console.log("playerInput: " + getPlayerChoice + "  PlayerScore: " + playerScore)
-    console.log("ComputerInput: " + getComputerChoice + "  ComputerScore: " + computerScore)
-    console.log(playRound(getComputerChoice, getPlayerChoice))
 }
-oneRoundBro()
+
+
+    function game() {
+        for (let i = 0; i < 5; i++) {
+            //function that gets player input
+            let getPlayerChoice = prompt("Rock, Paper, or Scissors?")
+            //sgetPlayerChoice = getPlayerChoice.toLowerCase;
+            const getComputerChoice = computerChoice(); // computer input baybee
+             console.log(playRound(getComputerChoice, getPlayerChoice))
+        } 
+        if (playerScore > computerScore) {
+            console.log("-----------------------------------------------------------------")
+            console.log(`You win the game | Final Score: ${playerScore} to ${computerScore}`)
+        } else if (playerScore < computerScore) {
+            console.log("-----------------------------------------------------------------")
+            console.log(`You lose the game | Final Score: ${playerScore} to ${computerScore}`)
+        } else {
+            console.log("-----------------------------------------------------------------")
+            console.log( `Its a tie | Final Score: ${playerScore} to ${computerScore}` )
+        }
+    }
+game()
+
