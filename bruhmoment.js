@@ -46,45 +46,39 @@ function playRound(getComputerChoice, getPlayerChoice) {
         return ` Its a Draw | Score: ${playerScore} to ${computerScore} | PlayerInput: ${getPlayerChoice} CompInput: ${getComputerChoice}`;
     }
 }
+
+
+
 let getPlayerChoice = document.querySelectorAll('button');
 getPlayerChoice.forEach((button) =>{
+    
     button.addEventListener('click', ()=> {
-        getPlayerChoice = button.value;
-        const getComputerChoice =computerChoice();
+        getPlayerChoice = button.value; // gets the value of the button you pressed and passes it into 
+        const getComputerChoice =computerChoice(); // Computer Choice
         const result = document.querySelector('#resultbox');
         result.innerHTML = playRound(getComputerChoice, getPlayerChoice);
         
-        /* putting the results into a div with an id of result box
-        let resultContent = playRound(getComputerChoice, getPlayerChoice);
-        const resultbox = document.querySelector('#resultbox');
-        result.append(resultContent);
-        resultbox.append(result);*/
-        })
-    });
- 
+        scoreTracker(playerScore, computerScore)
+    }, )
+});
+function scoreTracker(playerScore, computerScore){
+   let gameEndResult = document.querySelector('#gameresult')
+
+    if (playerScore === 5) { // if player wins display text
+    gameEndResult.append(`You win the game | Final Score: ${playerScore} to ${computerScore}`)
+    } else if (computerScore === 5) { // if player loses display this
+        gameEndResult.append(`You lose the game | Final Score: ${playerScore} to ${computerScore}`)
+    } else if (computerScore === 5 && playerScore === 5 ) { // for tie stuff
+    gameEndResult.append( `Its a tie | Final Score: ${playerScore} to ${computerScore}` )
+    } 
+};
+
+
+/* Please help this shtuff dont work help thanks
+
+*/
+   
 
 
 
-
-
-
-   /* function game() { // logic that plays five rounds of the game and stuff
-        for (let i = 0; i < 5; i++) {
-            //function that gets player input
-            //sgetPlayerChoice = getPlayerChoice.toLowerCase;
-            const getComputerChoice = computerChoice(); // computer input baybee
-             console.log(playRound(getComputerChoice, getPlayerChoice))
-        } 
-        if (playerScore > computerScore) {
-            console.log("-----------------------------------------------------------------")
-            console.log(`You win the game | Final Score: ${playerScore} to ${computerScore}`)
-        } else if (playerScore < computerScore) {
-            console.log("-----------------------------------------------------------------")
-            console.log(`You lose the game | Final Score: ${playerScore} to ${computerScore}`)
-        } else {
-            console.log("-----------------------------------------------------------------")
-            console.log( `Its a tie | Final Score: ${playerScore} to ${computerScore}` )
-        }
-    }
-game()*/
 
