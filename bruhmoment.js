@@ -75,11 +75,5 @@ function scoreTracker(playerScore, computerScore){
 };
 
 
-/* Please help this shtuff dont work help thanks
-
-*/
-   
-
-
 
 
