@@ -65,11 +65,12 @@ function scoreTracker(playerScore, computerScore){
    let gameEndResult = document.querySelector('#gameresult')
 
     if (playerScore === 5) { // if player wins display text
-    gameEndResult.append(`You win the game | Final Score: ${playerScore} to ${computerScore}`)
+    gameEndResult.append(` You win the game | Final Score: ${playerScore} to ${computerScore}`)
+
     } else if (computerScore === 5) { // if player loses display this
-        gameEndResult.append(`You lose the game | Final Score: ${playerScore} to ${computerScore}`)
+        gameEndResult.append(` You lose the game | Final Score: ${playerScore} to ${computerScore}`)
     } else if (computerScore === 5 && playerScore === 5 ) { // for tie stuff
-    gameEndResult.append( `Its a tie | Final Score: ${playerScore} to ${computerScore}` )
+    gameEndResult.append( ` Its a tie | Final Score: ${playerScore} to ${computerScore}` )
     } 
 };
 
